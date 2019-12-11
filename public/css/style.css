@@ -1,0 +1,73 @@
+*{
+    color: #ffffff;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+body{
+    background: #252525;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+#cont-formulario{
+    font-size: 2em; 
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    color: rgb(243, 243, 243);
+    background: #2e49a1;
+    padding: 50px 10px 10px 10px;
+}
+#cont-formulario{
+    font-family: 'Bree Serif', serif;
+}
+
+.form{
+    margin: 10px 0px 0px 0px;
+    display: flex; 
+    flex-direction: column;
+}
+.form input{
+    font-size: 0.8em;
+    color:  #252525;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 0px 10px 0px;
+    width: 300px;
+    height: 50px;
+}
+.form input::placeholder{
+
+    color: silver;
+}
+.form button{
+    font-size: 1em;
+    height: 90px;
+    cursor: pointer;
+    color: #ffffff; 
+    background: pink;
+}.form button:hover{
+    background: rgb(250, 182, 194);
+}
+
+.form input, .form button{
+    border-radius: 10px;
+}
+
+.lista-cadastros{
+    padding: 60px 0px 0px 10px;
+}
+table{
+    height: auto;
+    font-size: 1.2em;
+    
+}
+.cab{
+    background: gray;
+}
+td{
+    min-width: 100px;
+    padding: 10px;
+}

@@ -11,6 +11,7 @@ let log = (req, res, next) => {
 
 
 
+app.use(express.static('public'));
 app.use(log);
 app.use(body_parser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -20,9 +21,8 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res, next) => {
     res.render('index.ejs');
     next();
-    
-});
 
+});
 
 app.get('/users', (req, res, next) => {
     res.send(users_data_json.users);
@@ -30,17 +30,23 @@ app.get('/users', (req, res, next) => {
     
 });
 
+let lista = [
+
+];
+
+function guardarDados(res) {
+    lista.push(res);
+}
 
 app.get('/cadastro', (req, res, next) => {
-    res.render('cadastro.ejs');
+    res.render('cadastro.ejs', {lista: lista});
 });
-
 
 app.post('/cadastrar', (req, res, next) => {
     console.log(req.body);
+    guardarDados(req.body);
     res.redirect('/cadastro');
 });
-
 
 app.listen(3000, () => {
     console.log('Server on http://localhost:3000');

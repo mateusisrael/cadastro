@@ -3,16 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Cadastro</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
 </head>
 <body>
-    <h1>Cadastrar</h1>
-    <form action="/cadastrar" method="POST">
-        <input type="text" placeholder="Nome" name="name">
-        <input type="text" placeholder="Sobrenome" name="surname">
-        <button type="submit">Submit</button>
-
-    </form>
     
+    <section id="cont-formulario">
+        <h1>Novo Cadastro</h1>
+        <form class="form" action="/cadastrar" method="POST">
+            <input type="text" placeholder="Nome" name="name" required>
+            <input type="text" placeholder="Curso" name="course" required>
+            <input type="number" placeholder="Idade" name="age" required>
+            <button type="submit">Submit</button>
+
+        </form>
+    </section>
+
+
+    <% if(lista) { %>
+    <section class="lista-cadastros">
+
+        <table>
+            <tr>
+                <td class="cab">Nome</td>
+                <td class="cab">Sobrenome</td>
+                <td class="cab">Idade</td>
+            </tr>
+            <% for(aluno in lista) { %>
+
+                <tr>
+                    <td><%= lista[aluno].name %></td>
+                    <td><%= lista[aluno].course %></td>
+                    <td><%= lista[aluno].age %></td>
+                </tr>
+            <% } %>
+        </table>
+    </section>
+    <% } %>
+
+
+    <script src="/js/cadastrar.js"></script>
 </body>
 </html>
