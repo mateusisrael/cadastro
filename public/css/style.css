@@ -5,7 +5,8 @@
     border: 0px;
 }
 body{
-    background: #252525;
+    /* background: #252525; */
+    background: #2e49a1;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -47,27 +48,37 @@ body{
     height: 90px;
     cursor: pointer;
     color: #ffffff; 
-    background: pink;
+    background: rgb(230, 160, 173);
 }.form button:hover{
-    background: rgb(250, 182, 194);
+    background: rgb(228, 155, 168);
 }
 
 .form input, .form button{
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .lista-cadastros{
     padding: 60px 0px 0px 10px;
 }
 table{
+    border-radius: 5px;
     height: auto;
     font-size: 1.2em;
     
 }
+
+#table-header{
+    width: 100%;
+    background: rgb(230, 160, 173);
+}
 .cab{
-    background: gray;
+    background: rgb(230, 160, 173);
 }
 td{
     min-width: 100px;
     padding: 10px;
+    border-bottom: 1px solid #ffffff;
+}
+table{
+    border: 3px solid rgb(228, 155, 168);
 }

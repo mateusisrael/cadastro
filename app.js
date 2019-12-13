@@ -48,6 +48,14 @@ app.post('/cadastrar', (req, res, next) => {
     res.redirect('/cadastro');
 });
 
+app.route('/edit/:name')
+    .get((req, res) => {
+        let name = req.params.name;
+        console.log(`Edit ${name}`);
+        res.render('cadastro.ejs', {lista: lista});
+    })
+
+
 app.listen(3000, () => {
     console.log('Server on http://localhost:3000');
 });

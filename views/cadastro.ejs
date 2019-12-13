@@ -30,15 +30,16 @@
                 <td class="cab">Nome</td>
                 <td class="cab">Sobrenome</td>
                 <td class="cab">Idade</td>
+                <td class="cab"></td>
             </tr>
-            <% for(aluno in lista) { %>
-
+            <% lista.forEach(function(aluno) { %>
                 <tr>
-                    <td><%= lista[aluno].name %></td>
-                    <td><%= lista[aluno].course %></td>
-                    <td><%= lista[aluno].age %></td>
+                    <td><%= aluno.name %></td>
+                    <td><%= aluno.course %></td>
+                    <td><%= aluno.age %></td>
+                    <td><a href="/edit/<%= aluno.name %>">Edit</a> <a id="delete" href="">Delete</a></td>
                 </tr>
-            <% } %>
+            <% }) %>
         </table>
     </section>
     <% } %>
