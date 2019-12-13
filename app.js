@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const body_parser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
+
+
 
 let log = (req, res, next) => {
     let date = new Date();
@@ -56,6 +59,18 @@ app.route('/edit/:name')
     })
 
 
-app.listen(3000, () => {
-    console.log('Server on http://localhost:3000');
+const user = "cadastrosdb2";
+const password = "V3rTsptdVtEhkAV3";
+const uri = `mongodb+srv://${user}:${password}@cluster0-pix3k.mongodb.net/test?retryWrites=true&w=majority`;
+
+MongoClient.connect(uri, (err, client) => {
+    if(err) return console.log(err);
+    db = client.db('CRUD');
+
+    app.listen(3000, () => {
+        console.log('Server on http://localhost:3000');
+    });
+
 });
+
+
