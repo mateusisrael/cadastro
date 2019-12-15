@@ -9,7 +9,7 @@ let log = (req, res, next) => {
     let date = new Date();
     let hora = `${date.getHours()}:${date.getMinutes()}`
     console.log(`${hora}: ${req.method}`);
-    next();    
+    next();  
 }
 
 
@@ -24,32 +24,32 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res, next) => {
     res.render('index.ejs');
     next();
-
 });
 
-app.get('/users', (req, res, next) => {
-    res.send(users_data_json.users);
-    next();
+// app.get('/users', (req, res, next) => {
+//     res.send(users_data_json.users);
+//     next();
+
+// });
+// function guardarDados(res) {
+//     lista.push(res);
+// }
+
+app.get('/cadastro', (req, res, next) => {
+    let cursor = cadastros.find().toArray((err, result) => {
+        if(err) return console.log(err);
+
+        res.render('cadastro.ejs', {lista: result});
+    });
+
     
 });
 
-let lista = [
-
-];
-
-function guardarDados(res) {
-    lista.push(res);
-}
-
-app.get('/cadastro', (req, res, next) => {
-    res.render('cadastro.ejs', {lista: lista});
-});
-
 app.post('/cadastrar', (req, res, next) => {
-    console.log(req.body);
+
     cadastros.save(req.body, (err, result) => {
         if(err) return console.log(err);
-        console.log('Salvo no banco de dados');
+        console.log(`Salvo no banco de dados! ${result}`);
         res.redirect('/cadastro');
     });
     // guardarDados(req.body);
@@ -57,9 +57,12 @@ app.post('/cadastrar', (req, res, next) => {
 
 app.route('/edit/:name')
     .get((req, res) => {
-        let name = req.params.name;
-        console.log(`Edit ${name}`);
-        res.render('cadastro.ejs', {lista: lista});
+
+        let cursor = cadastros.find().toArray((err, result) => {
+            let name = req.params.name;
+            console.log(`Edit ${name}`);
+            res.render('cadastro.ejs', {lista: result});
+        });
     })
 
 const mongo_login = { user:"cadastrosdb2", password:"V3rTsptdVtEhkAV3" };
