@@ -47,8 +47,12 @@ app.get('/cadastro', (req, res, next) => {
 
 app.post('/cadastrar', (req, res, next) => {
     console.log(req.body);
-    guardarDados(req.body);
-    res.redirect('/cadastro');
+    cadastros.save(req.body, (err, result) => {
+        if(err) return console.log(err);
+        console.log('Salvo no banco de dados');
+        res.redirect('/cadastro');
+    });
+    // guardarDados(req.body);
 });
 
 app.route('/edit/:name')
@@ -58,19 +62,20 @@ app.route('/edit/:name')
         res.render('cadastro.ejs', {lista: lista});
     })
 
-
-const user = "cadastrosdb2";
-const password = "V3rTsptdVtEhkAV3";
-const uri = `mongodb+srv://${user}:${password}@cluster0-pix3k.mongodb.net/test?retryWrites=true&w=majority`;
+const mongo_login = { user:"cadastrosdb2", password:"V3rTsptdVtEhkAV3" };
+const uri = `mongodb+srv://${mongo_login.user}:${mongo_login.password}@cluster0-pix3k.mongodb.net/test?retryWrites=true&w=majority`;
 
 MongoClient.connect(uri, (err, client) => {
     if(err) return console.log(err);
+
+
     db = client.db('CRUD');
+    cadastros = db.collection('cadastros');
+
+// Importante: Lembrar de permitir o acesso do ip ao servidor mogodb.
 
     app.listen(3000, () => {
         console.log('Server on http://localhost:3000');
     });
 
 });
-
-
