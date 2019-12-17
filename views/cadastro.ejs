@@ -37,7 +37,7 @@
                     <td><%= aluno.name %></td>
                     <td><%= aluno.course %></td>
                     <td><%= aluno.age %></td>
-                    <td><a href="/edit/<%= aluno.name %>">Edit</a> <a id="delete" href="">Delete</a></td>
+                    <td><a href="/edit/<%= aluno.name %>">Edit</a> <a href="/delete/<%= aluno._id %>">Delete</a></td>
                 </tr>
             <% }) %>
         </table>
