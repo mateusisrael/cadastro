@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const body_parser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-
+const ObjectId = require('mongodb').ObjectId
 
 
 let log = (req, res, next) => {
@@ -75,7 +75,7 @@ app.route('/delete/:id')
 
         console.log(`Delete: ${req.params.id}`)
 
-        db.collection('cadastros').deleteOne({_id: id}, (err, result) => {
+        db.collection('cadastros').deleteOne({_id: ObjectId(id)}, (err, result) => {
             if (err) return res.send(500, err)
             console.log('Deletado do Banco de Dados!')
             res.redirect('/cadastro')
